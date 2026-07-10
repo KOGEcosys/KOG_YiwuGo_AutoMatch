@@ -1,67 +1,60 @@
 # KOG Wallet Mutual Exchange Web App
 
-这是 KOG Wallet 互助交换系统的公开 GitHub Pages 版本。
-
 公开网址：
 
 https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/
 
-## 功能
+## 多语言切换
+
+本版本已经内建语言选择器，使用者可以在网页右上角直接切换语言。
+
+目前支持：
+
+- English
+- 繁體中文
+- 简体中文
+- 日本語
+- 한국어
+- Français
+- Deutsch
+- Español
+- עברית
+- Ελληνικά
+- ไทย
+- Bahasa Indonesia
+- العربية
+- Русский
+
+也可以用 URL 参数直接打开指定语言：
+
+```text
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=en
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=zh-Hant
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=zh-Hans
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=ja
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=ko
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=fr
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=de
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=es
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=he
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=el
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=th
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=id
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=ar
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=ru
+```
+
+## 核心功能
 
 - 一页式 KOG Wallet 说明网站
+- 多语言 UI 切换与 URL 语言参数
 - 互助交换申请入口
-- 买方、卖方、商家、个人、教会、非盈利机构、时间银行成员申请
-- 货物、服务、时间、空间、现金、优惠权益登记
-- 首次参与者 POC / POF 基础贡献记录
-- 地方 80% / KOG 总部 20% 分配说明
-- 100% KCOINs 记录说明
 - K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD / KOG / K.Gold 多 Token 试算器
+- 首次参与者头 1000 K.USD 等值作为 KOG POC / POF 基础贡献
+- 地方 80% / KOG 总部 20% 分配
+- 参与方 100% KCOINs 等值记录
 - 浏览器本地申请资料暂存与 CSV 导出
-
-## KOG 内部参考估值
-
-### 一般交换规则
-
-```text
-1 K.USD = 30 K.NTD = 7 K.RMB = 1 RGA
-```
-
-如资料中出现 `RAG`，视为 `RGA` 的文字误写。
-
-### KOG 基本时薪 / 时间单位
-
-```text
-欧盟地区：1 K.TIME = 20 K.USD
-台湾地区：1 K.TIME = 300 K.NTD = 10 K.USD
-中国大陆地区：1 K.TIME = 30 K.RMB ≈ 4.2857 K.USD
-1 K.FOOD = 1 K.TIME
-```
-
-### KOG / K.Gold
-
-```text
-1 KOG = 1 K.Gold = 1 oz Gold Price
-```
-
-公开静态版不会写死黄金现货价格。地方团队或总部可在试算器中输入当天公允参考的 `1 oz Gold Price（K.USD）` 后，系统会计算 KOG / K.Gold 等值。
-
-## 首次参与者 POC / POF 基础贡献
-
-```text
-首次参与者头 1000 K.USD 等值 = KOG POC / POF 基础贡献值
-```
-
-此基础贡献由 KOG 团队用于科技迭代、更新维护、系统审核、资安、资料库维护、平台营运与全球支持。试算器会先扣除此基础贡献，再将余额进入地方 80% / KOG 总部 20% 的分配逻辑。参与方仍按总贡献价值取得 100% KCOINs 等值记录。
-
-## 分配规则
-
-```text
-贡献总价值 100%
-首次参与者头 1000 K.USD 等值：KOG POC / POF 基础贡献
-余额进入地方 80% / KOG 总部 20%
-参与方 KCOINs 100% 等值记录
-```
 
 ## 合规提醒
 
-KCOINs / K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD / KOG / K.Gold 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益、保证现金兑付、利息、分红或证券化承诺。首次参与者 POC / POF 基础贡献是生态建设、系统维护与科技迭代贡献，不构成投资合约、证券、债权或保证回报。涉及证券、金融商品、投资合约、收益权等申请，应进入合规审查，不走普通互助交换流程。
+KCOINs / K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD / KOG / K.Gold 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益、保证现金兑付或证券化承诺。涉及证券、金融商品、投资合约、收益权等申请，应进入合规审查，不走普通互助交换流程。
