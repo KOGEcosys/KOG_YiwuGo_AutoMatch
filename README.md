@@ -14,16 +14,36 @@ https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/
 - 货物、服务、时间、空间、现金、优惠权益登记
 - 地方 80% / KOG 总部 20% 分配说明
 - 100% KCOINs 记录说明
-- 80/20 + KCOINs 试算器
-- 浏览器本地申请资料暂存
-- CSV 导出，方便地方 KOG 团队收集资料
+- K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD 多 Token 试算器
+- 浏览器本地申请资料暂存与 CSV 导出
 
-## 重要说明
+## KOG 内部参考估值
 
-这个版本部署在 GitHub Pages，因此属于静态 Web App。申请资料会暂存在使用者自己的浏览器 localStorage 中，不会自动进入云端数据库。
+本公开版已经写入以下内部参考估值：
 
-正式运营若需要跨地区后台、多人审核、真实数据库、登录权限、QR 核销、KCOINs 钱包接口，请部署后端版本到 Railway / Render / VPS。
+```text
+1 RGA = 1 K.USD
+1 K.TIME = 20 K.USD（欧盟地区）
+1 K.TIME = 300 K.NTD（台湾地区）
+1 K.TIME = 30 K.RMB
+1 K.FOOD = 1 K.TIME
+```
+
+因此系统内部换算为：
+
+```text
+1 K.TIME = 1 K.FOOD = 20 K.USD = 20 RGA = 300 K.NTD = 30 K.RMB
+```
+
+## 分配规则
+
+```text
+贡献总价值 100%
+地方资源池 80%
+KOG 总部 20%
+参与方 KCOINs 100% 等值记录
+```
 
 ## 合规提醒
 
-KCOINs / K.NTD 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益或保证现金兑付。涉及证券、金融商品、投资合约、收益权等申请，必须进入合规审查，不走普通互助交换流程。
+KCOINs / K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益、保证现金兑付或证券化承诺。涉及证券、金融商品、投资合约、收益权等申请，应进入合规审查，不走普通互助交换流程。
