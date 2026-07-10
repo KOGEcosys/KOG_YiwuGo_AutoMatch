@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'kog_wallet_exchange_applications_v3';
+const STORAGE_KEY = 'kog_wallet_exchange_applications_v4';
 const $ = (selector) => document.querySelector(selector);
 const fmt = new Intl.NumberFormat('zh-Hans', { maximumFractionDigits: 4 });
 
@@ -10,6 +10,8 @@ const fmt = new Intl.NumberFormat('zh-Hans', { maximumFractionDigits: 4 });
 // Mainland China: 1 K.TIME = 30 K.RMB = 30/7 K.USD.
 // 1 K.FOOD = 1 K.TIME.
 // 1 KOG = 1 K.Gold = 1 oz gold price, entered manually as K.USD per oz.
+// First participant rule: the first 1000 K.USD equivalent is KOG POC/POF basic contribution for technology iteration, maintenance, review, and platform operations.
+const FIRST_PARTICIPANT_CONTRIBUTION_USD = 1000;
 const GENERAL_RATE_USD = {
   'K.USD': 1,
   'RGA': 1,
@@ -43,6 +45,7 @@ function saveApps(apps) { localStorage.setItem(STORAGE_KEY, JSON.stringify(apps)
 function getRegion() { return $('#regionInput')?.value || 'taiwan'; }
 function getTimeUsd(region = getRegion()) { return TIME_RATE_USD[region] || TIME_RATE_USD.taiwan; }
 function getGoldUsd() { return Math.max(Number($('#goldPriceInput')?.value || 0), 0); }
+function getFirstParticipantChecked() { return Boolean($('#firstParticipantInput')?.checked); }
 
 function toUsd(value, token, region = getRegion(), goldUsd = getGoldUsd()) {
   const numeric = Math.max(Number(value || 0), 0);
@@ -63,12 +66,17 @@ function convertAll(usdValue) {
   return Object.fromEntries(TOKENS.map((token) => [token, fromUsd(usdValue, token, region, goldUsd)]));
 }
 
-function calculate(value, token) {
+function calculate(value, token, firstParticipant = getFirstParticipantChecked()) {
   const baseUsd = toUsd(value, token);
+  const firstBase = firstParticipant ? Math.min(baseUsd, FIRST_PARTICIPANT_CONTRIBUTION_USD) : 0;
+  const allocatable = Math.max(baseUsd - firstBase, 0);
   return {
     total: baseUsd,
-    local: baseUsd * 0.8,
-    hq: baseUsd * 0.2,
+    firstBase,
+    allocatable,
+    local: allocatable * 0.8,
+    hq: allocatable * 0.2 + firstBase,
+    hqStandard: allocatable * 0.2,
     kcoin: baseUsd,
   };
 }
@@ -91,17 +99,20 @@ function updateCalculator() {
   const baseText = tokenAmount(result.total, 'K.USD');
   $('#regionRule').textContent = REGION_LABEL[getRegion()];
   $('#baseValue').textContent = baseText;
+  $('#firstBaseValue').textContent = `${tokenAmount(result.firstBase, 'K.USD')} 等值`;
+  $('#allocatableValue').textContent = `${tokenAmount(result.allocatable, 'K.USD')} 等值`;
   $('#localValue').textContent = `${tokenAmount(result.local, 'K.USD')} 等值`;
   $('#hqValue').textContent = `${tokenAmount(result.hq, 'K.USD')} 等值`;
   $('#kcoinValue').textContent = `${tokenAmount(result.kcoin, 'K.USD')} 等值`;
   const table = $('#tokenTable');
   if (table) {
-    table.innerHTML = [
-      rowTemplate('总价值 100%', result.total, `${value || 0} ${token}`),
-      rowTemplate('地方资源池 80%', result.local, '由地方 KOG 联盟、教会、非盈利机构或时间银行形成地方本位价值体'),
-      rowTemplate('KOG 总部 20%', result.hq, '总部交换、系统运营、审核、风控、全球支持'),
-      rowTemplate('参与方 KCOINs 100%', result.kcoin, 'KCOINs 为生态权益与互助交换记录单位'),
-    ].join('');
+    const rows = [rowTemplate('总价值 100%', result.total, `${value || 0} ${token}`)];
+    rows.push(rowTemplate('首次参与者 POC / POF 基础贡献', result.firstBase, '头 1000 K.USD 等值给 KOG 团队，用于科技迭代、更新维护、审核与平台营运'));
+    rows.push(rowTemplate('可进入 80/20 分配的余额', result.allocatable, '总价值扣除首次参与者基础贡献后的余额'));
+    rows.push(rowTemplate('地方资源池 80%', result.local, '由地方 KOG 联盟、教会、非盈利机构或时间银行形成地方本位价值体'));
+    rows.push(rowTemplate('KOG 总部合计', result.hq, '含首次基础贡献与余额的总部 20%，用于系统运营、审核、风控、全球支持'));
+    rows.push(rowTemplate('参与方 KCOINs 100%', result.kcoin, 'KCOINs 为生态权益与互助交换记录单位'));
+    table.innerHTML = rows.join('');
   }
 }
 
@@ -118,6 +129,9 @@ function handleSubmit(event) {
   const token = formData.get('currency') || 'K.NTD';
   const value = Number(formData.get('value') || 0);
   const region = formData.get('region') || getRegion();
+  const firstParticipant = formData.get('firstParticipant') === 'on';
+  const baseUsd = toUsd(value, token, region, getGoldUsd());
+  const firstBaseUsd = firstParticipant ? Math.min(baseUsd, FIRST_PARTICIPANT_CONTRIBUTION_USD) : 0;
   const record = {
     id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
     code: appCode(apps.length),
@@ -126,7 +140,8 @@ function handleSubmit(event) {
     type: formData.get('type'), name: formData.get('name'), location: formData.get('location'),
     email: formData.get('email'), contact: formData.get('contact'), contributionType: formData.get('contributionType'),
     description: formData.get('description'), value, currency: token, region,
-    request: formData.get('request'), baseUsd: toUsd(value, token, region, getGoldUsd()),
+    firstParticipant, firstBaseUsd,
+    request: formData.get('request'), baseUsd,
   };
   apps.unshift(record); saveApps(apps); form.reset();
   $('#formMessage').className = 'form-message success';
@@ -138,20 +153,27 @@ function updateDashboard() {
   const apps = readApps();
   const totals = apps.reduce((sum, app) => {
     const usd = Number(app.baseUsd || toUsd(app.value, app.currency, app.region || getRegion(), getGoldUsd()));
-    sum.local += usd * 0.8; sum.hq += usd * 0.2; sum.kcoin += usd; return sum;
-  }, { local: 0, hq: 0, kcoin: 0 });
+    const firstBase = Number(app.firstBaseUsd || 0);
+    const allocatable = Math.max(usd - firstBase, 0);
+    sum.firstBase += firstBase;
+    sum.local += allocatable * 0.8;
+    sum.hq += allocatable * 0.2 + firstBase;
+    sum.kcoin += usd;
+    return sum;
+  }, { firstBase: 0, local: 0, hq: 0, kcoin: 0 });
   $('#totalApps').textContent = apps.length;
+  $('#totalFirstBase').textContent = tokenAmount(totals.firstBase, 'K.USD');
   $('#totalLocal').textContent = tokenAmount(totals.local, 'K.USD');
   $('#totalHq').textContent = tokenAmount(totals.hq, 'K.USD');
   $('#totalKcoin').textContent = tokenAmount(totals.kcoin, 'K.USD');
   const tbody = $('#applicationsTable');
-  if (!apps.length) { tbody.innerHTML = '<tr><td colspan="8">目前本浏览器尚无申请资料。提交一笔申请后会显示在这里。</td></tr>'; return; }
-  tbody.innerHTML = apps.map((app) => `<tr><td><b>${safeText(app.code)}</b><br><span class="pill">${safeText(new Date(app.createdAt).toLocaleString())}</span></td><td>${safeText(app.type)}</td><td>${safeText(app.name)}<br><small>${safeText(app.email)}</small></td><td>${safeText(app.location)}</td><td>${safeText(app.contributionType)}<br><small>${safeText(app.description).slice(0, 80)}</small></td><td>${fmt.format(Number(app.value || 0))} ${safeText(app.currency)}<br><small>${safeText(app.region || '')}</small></td><td>${tokenAmount(Number(app.baseUsd || 0), 'K.USD')}</td><td><span class="pill">${safeText(app.status)}</span></td></tr>`).join('');
+  if (!apps.length) { tbody.innerHTML = '<tr><td colspan="9">目前本浏览器尚无申请资料。提交一笔申请后会显示在这里。</td></tr>'; return; }
+  tbody.innerHTML = apps.map((app) => `<tr><td><b>${safeText(app.code)}</b><br><span class="pill">${safeText(new Date(app.createdAt).toLocaleString())}</span></td><td>${safeText(app.type)}</td><td>${safeText(app.name)}<br><small>${safeText(app.email)}</small></td><td>${safeText(app.location)}</td><td>${safeText(app.contributionType)}<br><small>${safeText(app.description).slice(0, 80)}</small></td><td>${fmt.format(Number(app.value || 0))} ${safeText(app.currency)}<br><small>${safeText(app.region || '')}</small></td><td>${tokenAmount(Number(app.baseUsd || 0), 'K.USD')}</td><td>${app.firstParticipant ? tokenAmount(Number(app.firstBaseUsd || 0), 'K.USD') : '—'}<br><small>${app.firstParticipant ? '首次 POC/POF 基础贡献' : '非首次'}</small></td><td><span class="pill">${safeText(app.status)}</span></td></tr>`).join('');
 }
 
 function exportCsv() {
   const apps = readApps(); if (!apps.length) return alert('目前没有可导出的申请资料。');
-  const headers = ['code','createdAt','status','type','name','location','email','contact','contributionType','description','value','currency','region','baseUsd','request'];
+  const headers = ['code','createdAt','status','type','name','location','email','contact','contributionType','description','value','currency','region','baseUsd','firstParticipant','firstBaseUsd','request'];
   const rows = [headers.join(',')].concat(apps.map((app) => headers.map((key) => `"${String(app[key] ?? '').replaceAll('"', '""')}"`).join(',')));
   const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob); const a = document.createElement('a');
@@ -159,8 +181,8 @@ function exportCsv() {
 }
 function clearData() { if (!confirm('确认清除本浏览器的演示申请资料？')) return; localStorage.removeItem(STORAGE_KEY); updateDashboard(); }
 
-['valueInput','currencyInput','regionInput','goldPriceInput'].forEach((id) => $(`#${id}`)?.addEventListener('input', updateCalculator));
-['currencyInput','regionInput'].forEach((id) => $(`#${id}`)?.addEventListener('change', updateCalculator));
+['valueInput','currencyInput','regionInput','goldPriceInput','firstParticipantInput'].forEach((id) => $(`#${id}`)?.addEventListener('input', updateCalculator));
+['currencyInput','regionInput','firstParticipantInput'].forEach((id) => $(`#${id}`)?.addEventListener('change', updateCalculator));
 $('#applicationForm')?.addEventListener('submit', handleSubmit);
 $('#exportCsv')?.addEventListener('click', exportCsv);
 $('#clearData')?.addEventListener('click', clearData);
