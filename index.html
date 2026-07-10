@@ -1,219 +1,185 @@
 <!doctype html>
-<html lang="zh-Hant">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="KOG.ONE 全球 AI OPC 搜尋、比較與交易媒合平台"
-    />
-    <title>KOG.ONE AI OPC 全球搜尋引擎</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <aside class="sidebar">
-        <a class="brand" href="#" aria-label="KOG.ONE 首頁">
-          <span class="brand-mark">K</span>
-          <span>
-            <strong>KOG.ONE</strong>
-            <small>AI OPC Intelligence</small>
-          </span>
-        </a>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KOG Wallet 互助交换 Web App：下载钱包、申请交换、商家合作、地方 80% / 总部 20% 分配、100% KCOINs 记录。" />
+  <title>KOG Wallet｜互助交换 Web App</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="KOG Wallet 首页">
+      <span class="brand-mark">K</span>
+      <span><strong>KOG Wallet</strong><small>Mutual Exchange Gateway</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#wallet">钱包</a>
+      <a href="#exchange">互助交换</a>
+      <a href="#allocation">80/20</a>
+      <a href="#apply">申请</a>
+      <a href="#admin">后台</a>
+    </nav>
+    <a class="nav-cta" href="#apply">提出申请</a>
+  </header>
 
-        <nav class="main-nav" aria-label="主要導覽">
-          <button class="nav-item active" data-section="directory">
-            <span aria-hidden="true">⌕</span> 全球搜尋
-          </button>
-          <button class="nav-item" data-section="favorites">
-            <span aria-hidden="true">☆</span> 我的收藏
-            <b id="favoriteCount">0</b>
-          </button>
-          <button class="nav-item" data-section="method">
-            <span aria-hidden="true">◎</span> 評分方法
-          </button>
-        </nav>
-
-        <div class="sidebar-panel">
-          <p>你是 AI OPC 經營者？</p>
-          <strong>加入全球人才庫</strong>
-          <button id="joinButton">提交公司資料</button>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">KOG Wallet Web App</p>
+        <h1>让货物、服务、时间、空间与善意，进入真实交换。</h1>
+        <p class="hero-text">KOG Wallet 是地方互助交换入口。买方、卖方、商家、教会、非盈利机构、时间银行成员都可以提交可交换资源，由各地 KOG 团队联系、审核、媒合并记录初步交易。</p>
+        <div class="hero-actions">
+          <a class="btn gold" href="#apply">立即提出交换申请</a>
+          <a class="btn ghost" href="#exchange">了解系统流程</a>
         </div>
-
-        <div class="sidebar-footer">
-          <span class="status-dot"></span>
-          <span>資料庫持續更新</span>
+        <div class="trust-row">
+          <span>POF 信任确认</span><span>POC 贡献记录</span><span>地方 80%</span><span>KOG 总部 20%</span><span>100% KCOINs 记录</span>
         </div>
-      </aside>
-
-      <main class="main">
-        <header class="topbar">
-          <div>
-            <p class="eyebrow">GLOBAL AI ONE-PERSON COMPANY INDEX</p>
-            <h1>全球 AI OPC 搜尋引擎</h1>
-            <p class="subtitle">
-              依功能、費用、易用度與地區，找到最適合合作的 AI 一人公司。
-            </p>
+      </div>
+      <div class="phone-wrap" aria-label="手机钱包视觉图">
+        <div class="phone">
+          <div class="phone-top"><span></span><b>KOG Wallet</b><span></span></div>
+          <div class="balance-card">
+            <small>可记录 KCOINs 权益</small>
+            <strong>100%</strong>
+            <span>依据地方共识价值供应给参与买卖方</span>
           </div>
-          <div class="top-actions">
-            <button class="secondary-button" id="howButton">合作流程</button>
-            <button class="primary-button" id="matchButton">KOG.ONE 智慧媒合</button>
+          <div class="mini-grid">
+            <div><b>80%</b><small>地方资源池</small></div>
+            <div><b>20%</b><small>KOG 总部</small></div>
           </div>
-        </header>
-
-        <section class="search-panel" aria-label="搜尋與快速篩選">
-          <label class="search-box">
-            <span aria-hidden="true">⌕</span>
-            <input
-              id="searchInput"
-              type="search"
-              placeholder="搜尋公司、功能、產業或國家，例如：RAG、醫療、台灣"
-              autocomplete="off"
-            />
-            <kbd>/</kbd>
-          </label>
-          <div class="quick-filters" id="quickFilters">
-            <button class="quick-filter active" data-category="all">全部</button>
-            <button class="quick-filter" data-category="automation">流程自動化</button>
-            <button class="quick-filter" data-category="agent">AI Agent</button>
-            <button class="quick-filter" data-category="content">內容行銷</button>
-            <button class="quick-filter" data-category="data">資料分析</button>
-            <button class="quick-filter" data-category="commerce">電商銷售</button>
-            <button class="quick-filter" data-category="vertical">產業解決方案</button>
+          <div class="coupon-card">
+            <div>
+              <small>Mutual Exchange Ticket</small>
+              <b>货物 / 服务 / 时间 / 空间</b>
+            </div>
+            <div class="qr"></div>
           </div>
-        </section>
-
-        <section class="stats-strip" aria-label="平台統計">
-          <div><strong id="resultStat">0</strong><span>搜尋結果</span></div>
-          <div><strong>32</strong><span>國家與地區</span></div>
-          <div><strong>8</strong><span>功能類別</span></div>
-          <div><strong>4.7</strong><span>平均可信評分</span></div>
-          <p><span class="verified-mark">✓</span> KOG.ONE 人工與 AI 雙重檢核</p>
-        </section>
-
-        <div class="workspace">
-          <aside class="filters" id="filterPanel">
-            <div class="filter-header">
-              <h2>篩選條件</h2>
-              <button id="resetFilters">重設</button>
-            </div>
-
-            <fieldset>
-              <legend>地區</legend>
-              <label><input type="checkbox" name="region" value="asia" /> 亞洲 <span>9</span></label>
-              <label><input type="checkbox" name="region" value="north-america" /> 北美 <span>5</span></label>
-              <label><input type="checkbox" name="region" value="europe" /> 歐洲 <span>5</span></label>
-              <label><input type="checkbox" name="region" value="oceania" /> 大洋洲 <span>2</span></label>
-              <label><input type="checkbox" name="region" value="other" /> 其他地區 <span>3</span></label>
-            </fieldset>
-
-            <fieldset>
-              <legend>費用模式</legend>
-              <label><input type="checkbox" name="pricing" value="free" /> 可免費開始</label>
-              <label><input type="checkbox" name="pricing" value="subscription" /> 訂閱制</label>
-              <label><input type="checkbox" name="pricing" value="project" /> 專案報價</label>
-              <label><input type="checkbox" name="pricing" value="performance" /> 成效分潤</label>
-            </fieldset>
-
-            <fieldset>
-              <legend>每月預算上限</legend>
-              <div class="range-labels">
-                <span>US$0</span>
-                <strong id="budgetValue">US$10,000+</strong>
-              </div>
-              <input id="budgetRange" type="range" min="0" max="10000" step="250" value="10000" />
-            </fieldset>
-
-            <fieldset>
-              <legend>易用程度</legend>
-              <label><input type="radio" name="ease" value="0" checked /> 不限</label>
-              <label><input type="radio" name="ease" value="4.5" /> 4.5 以上</label>
-              <label><input type="radio" name="ease" value="4" /> 4.0 以上</label>
-            </fieldset>
-
-            <fieldset>
-              <legend>服務語言</legend>
-              <select id="languageFilter">
-                <option value="all">全部語言</option>
-                <option value="zh">中文</option>
-                <option value="en">English</option>
-                <option value="ja">日本語</option>
-                <option value="es">Español</option>
-              </select>
-            </fieldset>
-          </aside>
-
-          <section class="results-section">
-            <div class="results-toolbar">
-              <div>
-                <h2 id="resultsTitle">全部 AI OPC</h2>
-                <p id="resultsSummary">正在整理全球資料...</p>
-              </div>
-              <div class="toolbar-actions">
-                <button class="filter-toggle" id="filterToggle">篩選</button>
-                <label>
-                  <span>排序</span>
-                  <select id="sortSelect">
-                    <option value="recommended">KOG.ONE 推薦</option>
-                    <option value="rating">評分最高</option>
-                    <option value="ease">最容易使用</option>
-                    <option value="price-low">價格由低至高</option>
-                    <option value="newest">最新收錄</option>
-                  </select>
-                </label>
-              </div>
-            </div>
-
-            <div class="active-filters" id="activeFilters"></div>
-            <div class="company-list" id="companyList"></div>
-
-            <div class="empty-state" id="emptyState" hidden>
-              <strong>找不到符合條件的 AI OPC</strong>
-              <p>减少部分筛选条件，或交给 KOG.ONE 为你人工搜寻。</p>
-              <button class="primary-button" id="emptyMatchButton">提出媒合需求</button>
-            </div>
-          </section>
+          <div class="phone-list">
+            <p><span></span>地方团队联系</p>
+            <p><span></span>共识估值记录</p>
+            <p><span></span>初步交易完成</p>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
 
-    <div class="compare-bar" id="compareBar" hidden>
+    <section id="wallet" class="section">
+      <div class="section-head">
+        <p class="eyebrow">One wallet, many values</p>
+        <h2>一个钱包，连接用户、商家、机构与地方互助网络。</h2>
+        <p>KOG Wallet 不只是优惠券工具，而是地方资源登记、交换申请、贡献记录与 KCOINs 权益记录入口。</p>
+      </div>
+      <div class="cards four">
+        <article class="card"><div class="icon">📲</div><h3>使用者</h3><p>下载钱包、领取优惠券、提交需求、参与地方互助交换。</p></article>
+        <article class="card"><div class="icon">🏪</div><h3>买卖商家</h3><p>提交库存、产品、服务、空间、现金或优惠权益，取得流量与会员。</p></article>
+        <article class="card"><div class="icon">⛪</div><h3>教会 / 非营利</h3><p>成为地方承接单位，保留 80% 资源形成地方本位价值体。</p></article>
+        <article class="card"><div class="icon">🕰️</div><h3>时间银行</h3><p>把陪伴、教学、照护、志工时数记录为可交换资源。</p></article>
+      </div>
+    </section>
+
+    <section id="exchange" class="section soft">
+      <div class="section-head">
+        <p class="eyebrow">Mutual Exchange Gateway</p>
+        <h2>任何真实可验证资源，都可以提出申请。</h2>
+        <p>我们不强行干预各地区商务价值评估，而是让地方买卖双方、非盈利机构、教会、时间银行或 KOG 成员提出交易共识决议，再由系统记录与分配。</p>
+      </div>
+      <div class="resource-grid">
+        <article><span>📦</span><b>货物</b><p>农产品、库存、设备、礼品、生活物资。</p></article>
+        <article><span>🧰</span><b>服务</b><p>课程、顾问、维修、美容、餐饮、专业协助。</p></article>
+        <article><span>⏳</span><b>时间</b><p>陪伴、课辅、翻译、接送、志工时数。</p></article>
+        <article><span>🏛️</span><b>空间</b><p>教室、会议室、展位、店面、活动空间。</p></article>
+        <article><span>💵</span><b>现金</b><p>奉献、赞助、合作款、地方公益支持。</p></article>
+        <article><span>🎟️</span><b>权益</b><p>优惠券、体验券、会员权益、课程名额。</p></article>
+      </div>
+    </section>
+
+    <section id="flow" class="section">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>从申请到交换，流程必须简单、清楚、可追踪。</h2>
+      </div>
+      <div class="flow">
+        <div><b>01</b><span>线上申请</span><p>提交身份、地区、资源、需求与估值依据。</p></div>
+        <div><b>02</b><span>地方联系</span><p>各地 KOG 团队、教会或机构联系确认。</p></div>
+        <div><b>03</b><span>共识估值</span><p>买卖双方或机构提出地方交易共识。</p></div>
+        <div><b>04</b><span>初步交易</span><p>完成货物、服务、时间、空间或现金交换。</p></div>
+        <div><b>05</b><span>80/20 分配</span><p>地方保留 80%，总部取得 20%。</p></div>
+        <div><b>06</b><span>KCOINs 记录</span><p>总部供应 100% KCOINs 给参与买卖方。</p></div>
+      </div>
+    </section>
+
+    <section id="allocation" class="section split-section">
       <div>
-        <strong>比較清單</strong>
-        <span id="compareSummary">已選擇 0 / 3</span>
+        <p class="eyebrow">Allocation Rule</p>
+        <h2>地方 80% / KOG 总部 20%</h2>
+        <p class="lead">地方 KOG 联盟、非盈利机构、教会、时间银行成员保留 80% 的交换物件，形成各地区 KOG 交换系统与本位价值体；总部取得 20% 作为交换与系统运营基础，并供应 100% KCOINs 给参与买卖方。</p>
+        <div class="notice">合规边界：KCOINs / K.NTD 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益、保证现金兑付或证券化承诺。</div>
       </div>
-      <div class="compare-items" id="compareItems"></div>
-      <button id="clearCompare">清除</button>
-      <button class="primary-button" id="openCompare">開始比較</button>
-    </div>
-
-    <dialog id="detailDialog" class="detail-dialog">
-      <button class="dialog-close" data-close-dialog aria-label="關閉">×</button>
-      <div id="detailContent"></div>
-    </dialog>
-
-    <dialog id="compareDialog" class="compare-dialog">
-      <div class="dialog-heading">
-        <div>
-          <p class="eyebrow">SIDE-BY-SIDE</p>
-          <h2>AI OPC 比較表</h2>
+      <div class="calculator card">
+        <h3>80/20 + 100% KCOINs 试算</h3>
+        <label for="valueInput">地方共识价值</label>
+        <input id="valueInput" type="number" min="0" value="10000" />
+        <label for="currencyInput">单位</label>
+        <select id="currencyInput"><option>K.NTD</option><option>KCOINs</option><option>USD 等值</option><option>TWD 等值</option></select>
+        <div class="calc-results">
+          <p><span>地方资源池 80%</span><b id="localValue">8,000</b></p>
+          <p><span>KOG 总部 20%</span><b id="hqValue">2,000</b></p>
+          <p><span>买卖方 KCOINs 100%</span><b id="kcoinValue">10,000</b></p>
         </div>
-        <button class="dialog-close" data-close-dialog aria-label="關閉">×</button>
       </div>
-      <div class="comparison-table-wrap" id="comparisonContent"></div>
-    </dialog>
+    </section>
 
-    <dialog id="flowDialog" class="flow-dialog">
-      <div class="dialog-heading">
-        <div>
-          <p class="eyebrow">KOG.ONE TRANSACTION CENTER</p>
-          <h2 id="flowTitle">从搜寻到完成交易</h2>
+    <section id="apply" class="section soft">
+      <div class="section-head">
+        <p class="eyebrow">Apply online</p>
+        <h2>提出互助交换申请</h2>
+        <p>此 GitHub Pages 公开版会将申请暂存在本浏览器，并可由管理演示区导出 CSV。正式跨用户资料库版本需连接 Railway / Render 后端。</p>
+      </div>
+      <form id="applicationForm" class="apply-form card">
+        <div class="form-grid">
+          <div class="field"><label>申请身份</label><select name="type" required><option>买方</option><option>卖方</option><option>买卖双方</option><option>个人</option><option>商家</option><option>企业</option><option>教会</option><option>非盈利机构</option><option>时间银行成员</option><option>KOG 地方团队</option></select></div>
+          <div class="field"><label>姓名 / 机构名称</label><input name="name" required placeholder="例如：某某商家 / 某某教会" /></div>
+          <div class="field"><label>国家 / 城市 / 地区</label><input name="location" required placeholder="例如：Taiwan / Taipei / Nangan" /></div>
+          <div class="field"><label>Email</label><input name="email" type="email" required placeholder="example@email.com" /></div>
+          <div class="field"><label>电话 / WhatsApp / LINE / WeChat</label><input name="contact" placeholder="请填写至少一种联络方式" /></div>
+          <div class="field"><label>贡献类型</label><select name="contributionType"><option>货物</option><option>服务</option><option>时间</option><option>空间</option><option>现金</option><option>优惠权益</option><option>特殊资产，需合规审核</option></select></div>
+          <div class="field full"><label>可兑换产品或服务说明</label><textarea name="description" required placeholder="请说明名称、数量、规格、可交付日期、服务内容、空间条件或现金用途。"></textarea></div>
+          <div class="field"><label>地方共识 / 预估价值</label><input name="value" type="number" min="0" placeholder="例如：10000" /></div>
+          <div class="field"><label>价值单位</label><select name="currency"><option>K.NTD</option><option>KCOINs</option><option>USD 等值</option><option>TWD 等值</option><option>当地货币</option></select></div>
+          <div class="field full"><label>希望交换或需要对接的对象</label><textarea name="request" placeholder="例如：希望交换课程名额、公益物资、长者服务、场地、商家流量等。"></textarea></div>
+          <div class="field full check"><input id="accept" name="accept" type="checkbox" required /><label for="accept">我理解本申请需经地方 KOG 团队或承接机构审核，并接受地方 80% / KOG 总部 20% 的基本分配原则。</label></div>
         </div>
-        <button class="dialog-close" data-close-dialog aria-label="關閉">×</button>
-      </div>
-      <div id="flowContent"></div>
-    </dialog>
+        <button class="btn gold" type="submit">提交申请</button>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
 
-    <script src="./app.js"></script>
-  </body>
+    <section id="admin" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Local Admin Demo</p>
+        <h2>地方 KOG 团队申请管理演示</h2>
+        <p>公开静态版不储存到云端数据库。这里显示本浏览器收到的申请，可模拟地方团队联系、审核与导出。</p>
+      </div>
+      <div class="dashboard-grid">
+        <div class="stat card"><span>申请总数</span><b id="totalApps">0</b></div>
+        <div class="stat card"><span>地方资源池 80%</span><b id="totalLocal">0</b></div>
+        <div class="stat card"><span>KOG 总部 20%</span><b id="totalHq">0</b></div>
+        <div class="stat card"><span>KCOINs 100%</span><b id="totalKcoin">0</b></div>
+      </div>
+      <div class="card table-card">
+        <div class="table-actions"><button class="btn ghost" id="exportCsv">导出 CSV</button><button class="btn danger" id="clearData">清除本机演示资料</button></div>
+        <div class="table-wrap"><table><thead><tr><th>编号</th><th>身份</th><th>名称</th><th>地区</th><th>贡献</th><th>价值</th><th>状态</th></tr></thead><tbody id="applicationsTable"></tbody></table></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <b>KOG Wallet Mutual Exchange Gateway</b>
+    <p>Copyright @ KOG.ONE / 请申请加入 KOG 国度经济体 email to: kog.one.0@gmail.com</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
 </html>
