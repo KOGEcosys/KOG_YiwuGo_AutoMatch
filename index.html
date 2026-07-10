@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="KOG Wallet 互助交换 Web App：下载钱包、申请交换、商家合作、地方 80% / 总部 20% 分配、100% KCOINs 记录。" />
+  <meta name="description" content="KOG Wallet 互助交换 Web App：K.NTD、K.USD、K.RMB、RGA、K.TIME、K.FOOD 多 Token 80/20 + 100% KCOINs 试算。" />
   <title>KOG Wallet｜互助交换 Web App</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -16,7 +16,7 @@
     <nav class="nav-links" aria-label="主导航">
       <a href="#wallet">钱包</a>
       <a href="#exchange">互助交换</a>
-      <a href="#allocation">80/20</a>
+      <a href="#allocation">Token 试算</a>
       <a href="#apply">申请</a>
       <a href="#admin">后台</a>
     </nav>
@@ -30,20 +30,20 @@
         <h1>让货物、服务、时间、空间与善意，进入真实交换。</h1>
         <p class="hero-text">KOG Wallet 是地方互助交换入口。买方、卖方、商家、教会、非盈利机构、时间银行成员都可以提交可交换资源，由各地 KOG 团队联系、审核、媒合并记录初步交易。</p>
         <div class="hero-actions">
-          <a class="btn gold" href="#apply">立即提出交换申请</a>
-          <a class="btn ghost" href="#exchange">了解系统流程</a>
+          <a class="btn gold" href="#allocation">立即试算 Token</a>
+          <a class="btn ghost" href="#apply">提出交换申请</a>
         </div>
         <div class="trust-row">
-          <span>POF 信任确认</span><span>POC 贡献记录</span><span>地方 80%</span><span>KOG 总部 20%</span><span>100% KCOINs 记录</span>
+          <span>POF 信任确认</span><span>POC 贡献记录</span><span>地方 80%</span><span>KOG 总部 20%</span><span>100% KCOINs</span>
         </div>
       </div>
       <div class="phone-wrap" aria-label="手机钱包视觉图">
         <div class="phone">
           <div class="phone-top"><span></span><b>KOG Wallet</b><span></span></div>
           <div class="balance-card">
-            <small>可记录 KCOINs 权益</small>
-            <strong>100%</strong>
-            <span>依据地方共识价值供应给参与买卖方</span>
+            <small>多 Token 共识价值</small>
+            <strong>6</strong>
+            <span>K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD</span>
           </div>
           <div class="mini-grid">
             <div><b>80%</b><small>地方资源池</small></div>
@@ -51,8 +51,8 @@
           </div>
           <div class="coupon-card">
             <div>
-              <small>Mutual Exchange Ticket</small>
-              <b>货物 / 服务 / 时间 / 空间</b>
+              <small>Internal Reference Rate</small>
+              <b>1 K.TIME = 1 K.FOOD = 20 K.USD</b>
             </div>
             <div class="qr"></div>
           </div>
@@ -83,7 +83,7 @@
       <div class="section-head">
         <p class="eyebrow">Mutual Exchange Gateway</p>
         <h2>任何真实可验证资源，都可以提出申请。</h2>
-        <p>我们不强行干预各地区商务价值评估，而是让地方买卖双方、非盈利机构、教会、时间银行或 KOG 成员提出交易共识决议，再由系统记录与分配。</p>
+        <p>系统不强行干预各地区商务价值评估，而是让地方买卖双方、非盈利机构、教会、时间银行或 KOG 成员提出交易共识决议，再由系统记录与分配。</p>
       </div>
       <div class="resource-grid">
         <article><span>📦</span><b>货物</b><p>农产品、库存、设备、礼品、生活物资。</p></article>
@@ -112,21 +112,53 @@
 
     <section id="allocation" class="section split-section">
       <div>
-        <p class="eyebrow">Allocation Rule</p>
-        <h2>地方 80% / KOG 总部 20%</h2>
-        <p class="lead">地方 KOG 联盟、非盈利机构、教会、时间银行成员保留 80% 的交换物件，形成各地区 KOG 交换系统与本位价值体；总部取得 20% 作为交换与系统运营基础，并供应 100% KCOINs 给参与买卖方。</p>
-        <div class="notice">合规边界：KCOINs / K.NTD 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益、保证现金兑付或证券化承诺。</div>
+        <p class="eyebrow">Token Calculator</p>
+        <h2>80/20 + 100% KCOINs 多 Token 试算</h2>
+        <p class="lead">请选择贡献价值单位并输入数量。系统会自动换算 K.NTD、K.USD、K.RMB、RGA、K.TIME、K.FOOD，并同步计算地方资源池 80%、KOG 总部 20%、参与方 100% KCOINs 记录。</p>
+        <div class="rate-grid">
+          <div><b>1 RGA</b><span>= 1 K.USD</span></div>
+          <div><b>1 K.TIME</b><span>= 20 K.USD 欧盟地区</span></div>
+          <div><b>1 K.TIME</b><span>= 300 K.NTD 台湾地区</span></div>
+          <div><b>1 K.TIME</b><span>= 30 K.RMB</span></div>
+          <div><b>1 K.FOOD</b><span>= 1 K.TIME</span></div>
+          <div><b>KCOINs</b><span>= 100% 贡献等值记录</span></div>
+        </div>
+        <div class="notice">以上为 KOG 互助交换内部参考估值，不是外汇报价、证券价格、投资收益或现金兑付承诺。</div>
       </div>
       <div class="calculator card">
-        <h3>80/20 + 100% KCOINs 试算</h3>
-        <label for="valueInput">地方共识价值</label>
-        <input id="valueInput" type="number" min="0" value="10000" />
-        <label for="currencyInput">单位</label>
-        <select id="currencyInput"><option>K.NTD</option><option>KCOINs</option><option>USD 等值</option><option>TWD 等值</option></select>
-        <div class="calc-results">
-          <p><span>地方资源池 80%</span><b id="localValue">8,000</b></p>
-          <p><span>KOG 总部 20%</span><b id="hqValue">2,000</b></p>
-          <p><span>买卖方 KCOINs 100%</span><b id="kcoinValue">10,000</b></p>
+        <h3>试算输入</h3>
+        <label for="valueInput">贡献数量</label>
+        <input id="valueInput" type="number" min="0" step="0.01" value="1" />
+        <label for="currencyInput">贡献单位</label>
+        <select id="currencyInput">
+          <option>K.TIME</option>
+          <option>K.FOOD</option>
+          <option>K.USD</option>
+          <option>RGA</option>
+          <option>K.NTD</option>
+          <option>K.RMB</option>
+        </select>
+        <div class="calc-summary">
+          <p><span>换算基准</span><b id="baseValue">20 K.USD</b></p>
+          <p><span>地方资源池 80%</span><b id="localValue">16 K.USD</b></p>
+          <p><span>KOG 总部 20%</span><b id="hqValue">4 K.USD</b></p>
+          <p><span>参与方 100% KCOINs</span><b id="kcoinValue">20 K.USD 等值</b></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="section-head">
+        <p class="eyebrow">Full token table</p>
+        <h2>一张表看懂全部 Token 换算。</h2>
+        <p>此表会随上方输入即时更新，方便地方团队、买卖双方、教会、非盈利机构与时间银行成员快速达成共识。</p>
+      </div>
+      <div class="table-card card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>项目</th><th>K.NTD</th><th>K.USD</th><th>K.RMB</th><th>RGA</th><th>K.TIME</th><th>K.FOOD</th></tr></thead>
+            <tbody id="tokenTable"></tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -146,8 +178,8 @@
           <div class="field"><label>电话 / WhatsApp / LINE / WeChat</label><input name="contact" placeholder="请填写至少一种联络方式" /></div>
           <div class="field"><label>贡献类型</label><select name="contributionType"><option>货物</option><option>服务</option><option>时间</option><option>空间</option><option>现金</option><option>优惠权益</option><option>特殊资产，需合规审核</option></select></div>
           <div class="field full"><label>可兑换产品或服务说明</label><textarea name="description" required placeholder="请说明名称、数量、规格、可交付日期、服务内容、空间条件或现金用途。"></textarea></div>
-          <div class="field"><label>地方共识 / 预估价值</label><input name="value" type="number" min="0" placeholder="例如：10000" /></div>
-          <div class="field"><label>价值单位</label><select name="currency"><option>K.NTD</option><option>KCOINs</option><option>USD 等值</option><option>TWD 等值</option><option>当地货币</option></select></div>
+          <div class="field"><label>地方共识 / 预估价值</label><input name="value" type="number" min="0" placeholder="例如：1" /></div>
+          <div class="field"><label>价值单位</label><select name="currency"><option>K.TIME</option><option>K.FOOD</option><option>K.USD</option><option>RGA</option><option>K.NTD</option><option>K.RMB</option></select></div>
           <div class="field full"><label>希望交换或需要对接的对象</label><textarea name="request" placeholder="例如：希望交换课程名额、公益物资、长者服务、场地、商家流量等。"></textarea></div>
           <div class="field full check"><input id="accept" name="accept" type="checkbox" required /><label for="accept">我理解本申请需经地方 KOG 团队或承接机构审核，并接受地方 80% / KOG 总部 20% 的基本分配原则。</label></div>
         </div>
@@ -158,26 +190,34 @@
 
     <section id="admin" class="section">
       <div class="section-head">
-        <p class="eyebrow">Local Admin Demo</p>
-        <h2>地方 KOG 团队申请管理演示</h2>
-        <p>公开静态版不储存到云端数据库。这里显示本浏览器收到的申请，可模拟地方团队联系、审核与导出。</p>
+        <p class="eyebrow">Local demo dashboard</p>
+        <h2>本浏览器申请资料管理演示</h2>
+        <p>公开静态版只适合展示与单机测试。正式营运请使用后端资料库版集中管理所有申请。</p>
       </div>
       <div class="dashboard-grid">
-        <div class="stat card"><span>申请总数</span><b id="totalApps">0</b></div>
-        <div class="stat card"><span>地方资源池 80%</span><b id="totalLocal">0</b></div>
-        <div class="stat card"><span>KOG 总部 20%</span><b id="totalHq">0</b></div>
-        <div class="stat card"><span>KCOINs 100%</span><b id="totalKcoin">0</b></div>
+        <article class="card stat"><span>申请数</span><b id="totalApps">0</b></article>
+        <article class="card stat"><span>地方 80%（K.USD等值）</span><b id="totalLocal">0</b></article>
+        <article class="card stat"><span>总部 20%（K.USD等值）</span><b id="totalHq">0</b></article>
+        <article class="card stat"><span>KCOINs 100%（K.USD等值）</span><b id="totalKcoin">0</b></article>
       </div>
-      <div class="card table-card">
-        <div class="table-actions"><button class="btn ghost" id="exportCsv">导出 CSV</button><button class="btn danger" id="clearData">清除本机演示资料</button></div>
-        <div class="table-wrap"><table><thead><tr><th>编号</th><th>身份</th><th>名称</th><th>地区</th><th>贡献</th><th>价值</th><th>状态</th></tr></thead><tbody id="applicationsTable"></tbody></table></div>
+      <div class="table-card card">
+        <div class="table-actions">
+          <button id="exportCsv" class="btn green">导出 CSV</button>
+          <button id="clearData" class="btn danger">清除本机资料</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>编号</th><th>身份</th><th>名称</th><th>地区</th><th>贡献</th><th>价值</th><th>状态</th></tr></thead>
+            <tbody id="applicationsTable"></tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <b>KOG Wallet Mutual Exchange Gateway</b>
-    <p>Copyright @ KOG.ONE / 请申请加入 KOG 国度经济体 email to: kog.one.0@gmail.com</p>
+    <p>KCOINs / K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD 在本系统中作为生态权益、优惠券、互助交换与记录单位，不应表述为固定投资收益、保证现金兑付或证券化承诺。</p>
   </footer>
 
   <script src="./app.js"></script>
