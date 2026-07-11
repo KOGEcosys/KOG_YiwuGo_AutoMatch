@@ -4,6 +4,22 @@
 
 https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/
 
+## KOG Wallet 五合一優惠券平台
+
+已新增完整平台藍圖頁：
+
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/coupon-platform.html
+
+核心定位：按照 Groupon、Rakuten、Ibotta、Coupons.com、Kroger、Target、美團、ShopBack、Shopee、LINE Coupon 等全球成熟模式，KOG Wallet 建立自己的「優惠券錢包 + 地方商家發券系統 + 教會/非盈利服務券 + 時間銀行券 + AI 獲客發券平台」。
+
+五大系統：
+
+- 優惠券錢包：新客券、折扣券、回購券、分享券、服務券、食物券、時間券、會員權益券。
+- 地方商家發券系統：商家申請、AI 診斷、券種建立、QR 核銷、成效追蹤。
+- 教會/非盈利服務券：食物券、關懷券、教育券、長者服務券、空間券、公益物資券。
+- 時間銀行券：K.TIME / K.FOOD 服務紀錄、志工時數、地方審核、公益影響力統計。
+- AI 獲客發券平台：自動生成券種、文案、海報、短影音腳本、社群貼文與跟進話術。
+
 ## 臺灣 VASP 專法合規頁
 
 因應使用者提供之最新資訊：2026 年 6 月 30 日，臺灣正式三讀通過《虛擬資產服務法》，虛擬資產服務商（Virtual Asset Service Provider, VASP）進入專法治理與特許經營架構，主管機關為金管會。實際法律效力、施行日期、子法、過渡期與申請條件，仍應以立法院、總統公布與金管會正式公告為準。
