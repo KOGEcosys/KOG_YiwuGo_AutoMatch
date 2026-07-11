@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KOG Wallet 优惠券登录申请入口：厂商登录发布优惠券，使用者按地区主动申请优惠券，形成地方流量与名单入口。" />
+  <title>KOG Wallet｜优惠券登录申请入口</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .portal-grid{display:grid;grid-template-columns:420px 1fr;gap:24px;align-items:start}.portal-box{position:sticky;top:98px}.coupon-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.coupon-ticket{border:1px dashed rgba(242,199,102,.45);background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.06));border-radius:26px;padding:22px;position:relative;overflow:hidden}.coupon-ticket:before,.coupon-ticket:after{content:"";position:absolute;top:50%;width:24px;height:24px;border-radius:50%;background:#061023;transform:translateY(-50%)}.coupon-ticket:before{left:-12px}.coupon-ticket:after{right:-12px}.coupon-ticket h3{margin:0 0 8px;font-size:24px}.coupon-ticket .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.coupon-ticket .meta span{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:12px}.coupon-ticket strong{display:block;color:var(--gold);font-size:30px;margin:8px 0}.coupon-ticket p{color:var(--muted)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab-btn{border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--text);border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer}.tab-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#071224}.portal-panel{display:none}.portal-panel.active{display:block}.mini-note{color:var(--muted);font-size:13px}.wallet-list{display:grid;gap:12px}.wallet-item{border:1px solid var(--line);background:rgba(255,255,255,.07);border-radius:18px;padding:14px}.filter-row{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;margin-bottom:18px}.message-ok{color:var(--green);font-weight:900}.message-warn{color:var(--gold);font-weight:900}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.lead-tag{display:inline-block;border-radius:999px;background:rgba(69,211,162,.13);color:#a5ffdc;padding:4px 8px;font-size:12px;margin-top:6px}@media(max-width:1050px){.portal-grid{grid-template-columns:1fr}.portal-box{position:static}.coupon-list{grid-template-columns:1fr}.filter-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="./"><span class="brand-mark">K</span><span><strong>KOG Wallet</strong><small>Coupon Login Portal</small></span></a>
+    <nav class="nav-links"><a href="./">首页</a><a href="./coupon-platform.html">五合一平台</a><a href="#login">登录</a><a href="#merchant">厂商发券</a><a href="#claim">地区领券</a><a href="#admin">名单后台</a></nav>
+    <a class="nav-cta" href="#claim">申请优惠券</a>
+  </header>
+
+  <main>
+    <section class="hero" style="min-height:auto">
+      <div class="hero-copy">
+        <p class="eyebrow">KOG Coupon Login & Lead Gateway</p>
+        <h1>让厂商轻松登录优惠券，让使用者按地区主动申请优惠券。</h1>
+        <p class="hero-text">本页是 KOG Wallet 的优惠券流量入口。厂商、教会、非盈利机构、时间银行与地方团队可以登录发布券；使用者可以按国家、城市、商圈或教会地区申请优惠券，形成可跟进的地方名单。</p>
+        <div class="trust-row"><span>厂商发券</span><span>使用者领券</span><span>地区筛选</span><span>个人券包</span><span>CSV 名单导出</span><span>合规非兑付型权益</span></div>
+      </div>
+    </section>
+
+    <section id="login" class="section">
+      <div class="section-head"><p class="eyebrow">Step 1</p><h2>登录 / 建立档案</h2><p>公开展示版先用浏览器本地资料模拟登录。正式版接入云端数据库后，可改为真实帐号、权限、KYC、商家审核与地方团队后台。</p></div>
+      <div class="portal-grid">
+        <aside class="card portal-box">
+          <h3>当前登录档案</h3>
+          <p id="currentAccount" class="mini-note">尚未登录。请先建立厂商或使用者档案。</p>
+          <div class="tabs"><button class="tab-btn active" data-tab="accountPanel">建立/切换档案</button><button class="tab-btn" data-tab="walletPanel">我的券包</button></div>
+          <div id="accountPanel" class="portal-panel active">
+            <form id="accountForm">
+              <div class="field"><label>身份类型</label><select name="role" required><option value="user">使用者 / 领券者</option><option value="merchant">厂商 / 商家</option><option value="church">教会 / 非盈利机构</option><option value="timebank">时间银行 / 志工团队</option><option value="koglocal">KOG 地方团队</option></select></div>
+              <div class="field"><label>姓名 / 机构名称</label><input name="name" required placeholder="例如：某某餐厅 / 某某教会 / 王小明" /></div>
+              <div class="field"><label>国家 / 城市 / 地区</label><input name="region" required placeholder="例如：Taiwan / Taipei / Xinyi" /></div>
+              <div class="field"><label>Email</label><input name="email" type="email" required placeholder="example@email.com" /></div>
+              <div class="field"><label>电话 / LINE / WhatsApp / WeChat</label><input name="contact" placeholder="方便地方团队联络" /></div>
+              <button class="btn gold" type="submit">登录 / 建立档案</button>
+              <p id="accountMsg" class="form-message"></p>
+            </form>
+          </div>
+          <div id="walletPanel" class="portal-panel">
+            <h3>我的已申请优惠券</h3>
+            <div id="myWallet" class="wallet-list"></div>
+          </div>
+        </aside>
+
+        <div class="card">
+          <h3>这个入口如何成为流量系统？</h3>
+          <div class="flow">
+            <div><b>01</b><span>厂商登录</span><p>提交自己的优惠券、服务券、食物券、时间券或体验券。</p></div>
+            <div><b>02</b><span>地区曝光</span><p>券会按地区、类别、对象显示，让当地使用者主动申请。</p></div>
+            <div><b>03</b><span>名单产生</span><p>每一次领券申请都变成可跟进的潜在客户或公益需求。</p></div>
+            <div><b>04</b><span>地方跟进</span><p>KOG 地方团队、商家、教会或非盈利机构联系确认。</p></div>
+            <div><b>05</b><span>扫码核销</span><p>正式版可接 QR Code、券码、POS、Telegram Bot 或人工确认。</p></div>
+            <div><b>06</b><span>回购再发券</span><p>AI 根据申请和核销结果推荐回购券、分享券或公益服务券。</p></div>
+          </div>
+          <div class="notice">合规定位：本页所有优惠券、KCOINs、K.TIME、K.FOOD、K.NTD、K.USD、RGA 等，仅作为优惠、权益、互助交换与内部参考记录，不构成投资、证券、稳定币、现金兑付或虚拟资产服务承诺。</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="merchant" class="section soft">
+      <div class="section-head"><p class="eyebrow">Step 2A</p><h2>厂商 / 机构登录自己的优惠券</h2><p>商家、教会、非盈利机构、时间银行与地方团队可用同一表单登记各种优惠券，作为 KOG Wallet 的券库来源。</p></div>
+      <form id="couponForm" class="apply-form card">
+        <div class="form-grid">
+          <div class="field"><label>发行者名称</label><input name="issuer" required placeholder="例如：幸福餐厅 / 城市教会 / AI OPC 课程中心" /></div>
+          <div class="field"><label>发行者类型</label><select name="issuerType"><option>地方商家</option><option>企业厂商</option><option>教会</option><option>非盈利机构</option><option>食物银行</option><option>时间银行</option><option>KOG 地方团队</option></select></div>
+          <div class="field"><label>适用地区</label><input name="region" required placeholder="例如：Taiwan / Taipei / Xinyi" /></div>
+          <div class="field"><label>券类别</label><select name="category"><option>新客券</option><option>折扣券</option><option>满减券</option><option>体验券</option><option>回购券</option><option>分享券</option><option>食物券 K.FOOD</option><option>时间券 K.TIME</option><option>公益服务券</option><option>课程券</option><option>空间券</option><option>联盟券</option></select></div>
+          <div class="field"><label>优惠券名称</label><input name="title" required placeholder="例如：首次消费 8 折券 / 1 小时 AI 咨询体验券" /></div>
+          <div class="field"><label>面额 / 权益</label><input name="value" required placeholder="例如：100 K.NTD / 10% OFF / 1 K.TIME / 免费体验一次" /></div>
+          <div class="field"><label>发行数量</label><input name="quantity" type="number" min="1" value="100" /></div>
+          <div class="field"><label>有效日期</label><input name="validUntil" type="date" /></div>
+          <div class="field full"><label>使用规则</label><textarea name="terms" required placeholder="例如：限新客、每人一次、需预约、不得兑换现金、由发行者最终确认。"></textarea></div>
+          <div class="field full"><label>AI 获客说明 / 目标客群</label><textarea name="audience" placeholder="例如：附近 3 公里居民、教会会友、银发族、AI 课程学员、小商家老板。"></textarea></div>
+          <div class="field full check"><input id="couponCompliance" type="checkbox" required /><label for="couponCompliance">我理解此券为优惠、权益、服务或互助交换凭证，不得宣称投资收益、现金兑付、稳定币、证券或虚拟资产交易服务。</label></div>
+        </div>
+        <button class="btn gold" type="submit">发布到本地券库</button>
+        <p id="couponMsg" class="form-message"></p>
+      </form>
+    </section>
+
+    <section id="claim" class="section">
+      <div class="section-head"><p class="eyebrow">Step 2B</p><h2>使用者按地区主动申请优惠券</h2><p>使用者可以查询所在地区的商家券、公益券、时间券、食物券与服务券。每一次申请都会成为地方团队可跟进的名单入口。</p></div>
+      <div class="filter-row card">
+        <div class="field"><label>地区关键词</label><input id="regionFilter" placeholder="输入城市、国家、商圈或教会地区" /></div>
+        <div class="field"><label>券类别</label><select id="categoryFilter"><option value="">全部类别</option><option>新客券</option><option>折扣券</option><option>满减券</option><option>体验券</option><option>回购券</option><option>分享券</option><option>食物券 K.FOOD</option><option>时间券 K.TIME</option><option>公益服务券</option><option>课程券</option><option>空间券</option><option>联盟券</option></select></div>
+        <button class="btn gold" id="searchCoupons" type="button">查询优惠券</button>
+      </div>
+      <div id="couponList" class="coupon-list"></div>
+    </section>
+
+    <section id="admin" class="section soft">
+      <div class="section-head"><p class="eyebrow">Local Leads Back Office</p><h2>名单后台：把领券申请变成地方流量入口</h2><p>公开版资料存在本浏览器；正式版应接云端数据库、商家后台、KOG 地方团队权限、自动通知、KYC/合规审查与核销证据。</p></div>
+      <div class="dashboard-grid">
+        <article class="card stat"><span>登录档案</span><b id="statAccounts">0</b></article>
+        <article class="card stat"><span>已发布优惠券</span><b id="statCoupons">0</b></article>
+        <article class="card stat"><span>领券申请</span><b id="statClaims">0</b></article>
+        <article class="card stat"><span>地区入口</span><b id="statRegions">0</b></article>
+      </div>
+      <div class="table-card card">
+        <div class="table-actions"><button class="btn green" id="exportCoupons">导出优惠券 CSV</button><button class="btn green" id="exportClaims">导出领券名单 CSV</button><button class="btn danger" id="clearPortal">清除本机演示资料</button></div>
+        <div class="table-wrap"><table><thead><tr><th>时间</th><th>申请人</th><th>地区</th><th>优惠券</th><th>发行者</th><th>状态</th></tr></thead><tbody id="claimsTable"></tbody></table></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><b>KOG Wallet Coupon Login Portal</b><p>公开展示版：资料暂存于浏览器 localStorage。正式营运应建立云端资料库、真实登录、权限管理、商家审核、KYC/AML、核销证据、隐私政策与合规审查。</p></footer>
+
+  <script>
+    const KEYS={accounts:'kog_coupon_accounts_v1',coupons:'kog_coupon_items_v1',claims:'kog_coupon_claims_v1',current:'kog_coupon_current_account_v1'};
+    const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
+    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch{return[]}};
+    const write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+    const now=()=>new Date().toISOString();
+    function id(prefix){return prefix+'-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,7).toUpperCase()}
+    function current(){try{return JSON.parse(localStorage.getItem(KEYS.current)||'null')}catch{return null}}
+    function setCurrent(a){localStorage.setItem(KEYS.current,JSON.stringify(a));renderAll()}
+    function seed(){if(read(KEYS.coupons).length)return;write(KEYS.coupons,[
+      {id:id('KOGCP'),createdAt:now(),issuer:'KOG 示范餐饮商家',issuerType:'地方商家',region:'Taiwan / Taipei / Xinyi',category:'新客券',title:'首次消费 8 折券',value:'20% OFF',quantity:100,validUntil:'2026-12-31',terms:'限新客，每人一次，不兑换现金，由商家最终确认。',audience:'附近居民、上班族、教会会友'},
+      {id:id('KOGCP'),createdAt:now(),issuer:'KOG 时间银行示范站',issuerType:'时间银行',region:'Taiwan / Taoyuan / Zhongli',category:'时间券 K.TIME',title:'1 小时银发族手机教学券',value:'1 K.TIME',quantity:50,validUntil:'2026-12-31',terms:'需预约，由时间银行志工确认完成。',audience:'银发族、家庭照护者、社区居民'},
+      {id:id('KOGCP'),createdAt:now(),issuer:'城市关怀食物银行',issuerType:'非盈利机构',region:'Taiwan / New Taipei / Banqiao',category:'食物券 K.FOOD',title:'公益餐食兑换券',value:'1 K.FOOD',quantity:200,validUntil:'2026-12-31',terms:'限公益需求者申请，由地方机构确认。',audience:'需要食物协助的家庭与个人'}
+    ])}
+    function renderAccount(){const a=current();$('#currentAccount').innerHTML=a?`<b>${esc(a.name)}</b><br><span class="pill">${esc(a.role)}</span> <span class="pill">${esc(a.region)}</span><br><small>${esc(a.email)} ${esc(a.contact||'')}</small>`:'尚未登录。请先建立厂商或使用者档案。'}
+    function renderCoupons(){const region=($('#regionFilter')?.value||'').toLowerCase();const cat=$('#categoryFilter')?.value||'';let coupons=read(KEYS.coupons);if(region)coupons=coupons.filter(c=>String(c.region).toLowerCase().includes(region));if(cat)coupons=coupons.filter(c=>c.category===cat);const list=$('#couponList');if(!coupons.length){list.innerHTML='<div class="card"><h3>目前没有符合条件的优惠券</h3><p class="mini-note">请换一个地区关键词，或请厂商先发布优惠券。</p></div>';return}list.innerHTML=coupons.map(c=>`<article class="coupon-ticket"><h3>${esc(c.title)}</h3><div class="meta"><span>${esc(c.category)}</span><span>${esc(c.region)}</span><span>${esc(c.issuerType)}</span></div><strong>${esc(c.value)}</strong><p>${esc(c.terms)}</p><p class="mini-note">发行者：${esc(c.issuer)}｜剩余/发行：${remaining(c.id)} / ${esc(c.quantity||0)}｜有效期：${esc(c.validUntil||'未设定')}</p><button class="btn gold" onclick="claimCoupon('${esc(c.id)}')">申请此优惠券</button></article>`).join('')}
+    function remaining(couponId){const c=read(KEYS.coupons).find(x=>x.id===couponId);const used=read(KEYS.claims).filter(x=>x.couponId===couponId).length;return Math.max(Number(c?.quantity||0)-used,0)}
+    window.claimCoupon=function(couponId){const a=current();if(!a){alert('请先建立/登录使用者档案，再申请优惠券。');location.hash='#login';return}const c=read(KEYS.coupons).find(x=>x.id===couponId);if(!c)return;if(remaining(couponId)<=0){alert('此优惠券已无剩余名额。');return}const claims=read(KEYS.claims);if(claims.some(x=>x.couponId===couponId&&x.accountEmail===a.email)){alert('您已经申请过这张优惠券。');return}claims.unshift({id:id('KOGCL'),createdAt:now(),couponId:c.id,couponTitle:c.title,issuer:c.issuer,category:c.category,region:c.region,accountName:a.name,accountRole:a.role,accountEmail:a.email,accountContact:a.contact,status:'待地方团队或发行者联系'});write(KEYS.claims,claims);alert('已申请：'+c.title+'。此申请已进入本地名单入口。');renderAll()}
+    function renderWallet(){const a=current();const box=$('#myWallet');if(!a){box.innerHTML='<p class="mini-note">请先登录。</p>';return}const claims=read(KEYS.claims).filter(x=>x.accountEmail===a.email);box.innerHTML=claims.length?claims.map(x=>`<div class="wallet-item"><b>${esc(x.couponTitle)}</b><br><small>${esc(x.region)}｜${esc(x.issuer)}｜${esc(x.status)}</small><br><span class="lead-tag mono">${esc(x.id)}</span></div>`).join(''):'<p class="mini-note">尚未申请任何优惠券。</p>'}
+    function renderClaims(){const rows=read(KEYS.claims);$('#claimsTable').innerHTML=rows.length?rows.map(x=>`<tr><td>${esc(new Date(x.createdAt).toLocaleString())}<br><small class="mono">${esc(x.id)}</small></td><td>${esc(x.accountName)}<br><small>${esc(x.accountEmail)} ${esc(x.accountContact||'')}</small></td><td>${esc(x.region)}</td><td>${esc(x.couponTitle)}<br><small>${esc(x.category)}</small></td><td>${esc(x.issuer)}</td><td><span class="pill">${esc(x.status)}</span></td></tr>`).join(''):'<tr><td colspan="6">目前没有领券申请。</td></tr>'}
+    function renderStats(){const accounts=read(KEYS.accounts),coupons=read(KEYS.coupons),claims=read(KEYS.claims);$('#statAccounts').textContent=accounts.length;$('#statCoupons').textContent=coupons.length;$('#statClaims').textContent=claims.length;$('#statRegions').textContent=new Set(coupons.map(c=>c.region)).size}
+    function renderAll(){renderAccount();renderCoupons();renderWallet();renderClaims();renderStats()}
+    function toCsv(rows,headers){return [headers.join(',')].concat(rows.map(r=>headers.map(h=>`"${String(r[h]??'').replaceAll('"','""')}"`).join(','))).join('\n')}
+    function download(name,text){const blob=new Blob([text],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+    $$('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{$$('.tab-btn').forEach(b=>b.classList.remove('active'));$$('.portal-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');$('#'+btn.dataset.tab).classList.add('active')}));
+    $('#accountForm').addEventListener('submit',e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());const accounts=read(KEYS.accounts);const existing=accounts.find(a=>a.email===d.email);const acct={id:existing?.id||id('KOGAC'),createdAt:existing?.createdAt||now(),...d};if(existing)Object.assign(existing,acct);else accounts.unshift(acct);write(KEYS.accounts,accounts);setCurrent(acct);$('#accountMsg').className='form-message message-ok';$('#accountMsg').textContent='已登录：'+acct.name});
+    $('#couponForm').addEventListener('submit',e=>{e.preventDefault();const a=current();const d=Object.fromEntries(new FormData(e.target).entries());const coupons=read(KEYS.coupons);coupons.unshift({id:id('KOGCP'),createdAt:now(),createdBy:a?.email||'',...d,status:'公开展示 / 待正式审核'});write(KEYS.coupons,coupons);e.target.reset();$('#couponMsg').className='form-message message-ok';$('#couponMsg').textContent='优惠券已发布到本地券库，可在地区领券区查询申请。';renderAll()});
+    $('#searchCoupons').addEventListener('click',renderCoupons);$('#regionFilter').addEventListener('input',renderCoupons);$('#categoryFilter').addEventListener('change',renderCoupons);
+    $('#exportCoupons').addEventListener('click',()=>download('kog-coupons-'+new Date().toISOString().slice(0,10)+'.csv',toCsv(read(KEYS.coupons),['id','createdAt','issuer','issuerType','region','category','title','value','quantity','validUntil','terms','audience','status'])));
+    $('#exportClaims').addEventListener('click',()=>download('kog-coupon-leads-'+new Date().toISOString().slice(0,10)+'.csv',toCsv(read(KEYS.claims),['id','createdAt','couponId','couponTitle','issuer','category','region','accountName','accountRole','accountEmail','accountContact','status'])));
+    $('#clearPortal').addEventListener('click',()=>{if(confirm('确认清除本浏览器的登录、优惠券与申请演示资料？')){Object.values(KEYS).forEach(k=>localStorage.removeItem(k));seed();renderAll()}});
+    seed();renderAll();
+  </script>
+</body>
+</html>
