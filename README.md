@@ -4,6 +4,22 @@
 
 https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/
 
+## 優惠券登入申請入口
+
+已新增可操作的優惠券登入與領券入口：
+
+https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/coupon-portal.html
+
+此入口提供：
+
+- 使用者 / 廠商 / 教會 / 非盈利機構 / 時間銀行 / KOG 地方團隊建立檔案與模擬登入
+- 廠商與機構發布自己的優惠券、服務券、食物券、時間券、公益券、課程券與聯盟券
+- 使用者按國家、城市、商圈或地方教會地區主動查詢並申請優惠券
+- 每一次領券申請形成地方團隊、商家或機構可跟進的流量名單
+- 個人券包顯示已申請優惠券
+- 優惠券資料與領券名單可匯出 CSV
+- 公開版資料暫存在瀏覽器 localStorage；正式版應接雲端資料庫、真實登入、權限管理、KYC/AML、商家審核與核銷證據
+
 ## KOG Wallet 五合一優惠券平台
 
 已新增完整平台藍圖頁：
@@ -74,6 +90,8 @@ https://kogecosys.github.io/KOG_YiwuGo_AutoMatch/?lang=ru
 
 - 一頁式 KOG Wallet 說明網站
 - 多語言 UI 切換與 URL 語言參數
+- 優惠券登入申請入口
+- 廠商發券、使用者按地區申請優惠券、個人券包與名單 CSV 匯出
 - 互助交換申請入口
 - K.NTD / K.USD / K.RMB / RGA / K.TIME / K.FOOD / KOG / K.Gold 多 Token 試算器
 - 首次參與者頭 1000 K.USD 等值作為 KOG POC / POF 基礎貢獻
